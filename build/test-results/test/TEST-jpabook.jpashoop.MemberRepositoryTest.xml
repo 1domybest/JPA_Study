@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="jpabook.jpashoop.MemberRepositoryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-01-10T09:20:01" hostname="onseogtaes-MacBook-Pro.local" time="0.06">
+  <properties/>
+  <testcase name="testMember()" classname="jpabook.jpashoop.MemberRepositoryTest" time="0.06"/>
+  <system-out><![CDATA[2025-01-10T18:20:01.074+09:00  INFO 37750 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [jpabook.jpashoop.MemberRepositoryTest]: MemberRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-01-10T18:20:01.075+09:00  INFO 37750 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration jpabook.jpashoop.JpashoopApplication for test class jpabook.jpashoop.MemberRepositoryTest
+2025-01-10T18:20:01.105+09:00 DEBUG 37750 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        next value for member_seq
+같니?true
+2025-01-10T18:20:01.132+09:00 DEBUG 37750 --- [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        member
+        (user_name, id) 
+    values
+        (?, ?)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
