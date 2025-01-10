@@ -24,13 +24,17 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-devtools'
-	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'com.h2database:h2'
-	annotationProcessor 'org.projectlombok:lombok'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // jpa
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf' // web
+	implementation 'org.springframework.boot:spring-boot-starter-web' // web 설정 세팅
+	implementation 'org.springframework.boot:spring-boot-devtools' // 데브툴
+
+
+	implementation("com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.9.1") // DB 쿼리, value 확인 라이브러리 [실버전에서는 제거 필요 성능이슈]
+
+	compileOnly 'org.projectlombok:lombok' // 롬복
+	runtimeOnly 'com.h2database:h2' // db
+	annotationProcessor 'org.projectlombok:lombok' // 어노테이션 설정
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
