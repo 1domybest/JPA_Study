@@ -34,7 +34,7 @@ public class InitDB {
     @Transactional
     @RequiredArgsConstructor
     static class initService {
-        
+
         private final EntityManager em;
 
         public void dbInit1() {
