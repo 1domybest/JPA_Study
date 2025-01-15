@@ -54,7 +54,7 @@ public class InitDB {
 
             Delivery delivery = createDelivery(member);
             Order order = Order.createOrder(member, delivery, orderItem1, orderItem2);
-
+            System.out.println("주문완료");
             em.persist(order);
         }
 

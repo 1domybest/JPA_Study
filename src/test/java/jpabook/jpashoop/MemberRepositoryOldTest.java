@@ -2,7 +2,7 @@ package jpabook.jpashoop;
 
 import jakarta.persistence.EntityManager;
 import jpabook.jpashoop.domain.Member;
-import jpabook.jpashoop.repository.MemberRepository;
+import jpabook.jpashoop.repository.MemberRepositoryOld;
 import jpabook.jpashoop.service.MemberService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +13,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
-class MemberRepositoryTest {
+class MemberRepositoryOldTest {
 
     @Autowired
-    MemberRepository memberRepository;
+    MemberRepositoryOld memberRepositoryOld;
 
     @Autowired
     MemberService memberService;
@@ -35,7 +35,7 @@ class MemberRepositoryTest {
 
         //then
         em.flush();
-        assertEquals(member, memberRepository.findOne(savedId));
+        assertEquals(member, memberRepositoryOld.findOne(savedId));
     }
 
     @Test

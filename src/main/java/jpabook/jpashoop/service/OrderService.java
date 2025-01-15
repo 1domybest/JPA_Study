@@ -6,7 +6,7 @@ import jpabook.jpashoop.domain.Order;
 import jpabook.jpashoop.domain.OrderItem;
 import jpabook.jpashoop.domain.item.Item;
 import jpabook.jpashoop.repository.ItemRepository;
-import jpabook.jpashoop.repository.MemberRepository;
+import jpabook.jpashoop.repository.MemberRepositoryOld;
 import jpabook.jpashoop.repository.OrderRepository;
 import jpabook.jpashoop.repository.OrderSearch;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,7 @@ import java.util.List;
 public class OrderService {
 
     private final OrderRepository orderRepository;
-    private final MemberRepository memberRepository;
+    private final MemberRepositoryOld memberRepositoryOld;
     private final ItemRepository itemRepository;
 
     /**
@@ -30,7 +30,7 @@ public class OrderService {
     @Transactional
     public Long order(Long memberId, Long itemId, int count) {
         // 엔티티 조회
-        Member member = memberRepository.findOne(memberId);
+        Member member = memberRepositoryOld.findOne(memberId);
         Item item = itemRepository.fincOne(itemId);
 
         // 배송정보 생성
@@ -66,6 +66,12 @@ public class OrderService {
      * 검색
      */
     public List<Order> findOrders(OrderSearch orderSearch) {
-        return orderRepository.findAllByString(orderSearch);
+        List<Order> all = orderRepository.findAll(orderSearch);
+        for (Order order : all) {
+            for (OrderItem item : order.getOrderItems()) {
+                System.out.println("아이템 이름 " + item.getItem().getName());
+            }
+        }
+        return all;
     }
 }

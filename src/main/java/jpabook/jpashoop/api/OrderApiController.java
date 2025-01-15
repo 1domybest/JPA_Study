@@ -9,6 +9,7 @@ import jpabook.jpashoop.repository.order.query.OrderFlatDto;
 import jpabook.jpashoop.repository.order.query.OrderItemQueryDTO;
 import jpabook.jpashoop.repository.order.query.OrderQueryDTO;
 import jpabook.jpashoop.repository.order.query.OrderQueryRepository;
+import jpabook.jpashoop.service.query.OrderQueryService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +30,7 @@ public class OrderApiController {
 
     private final OrderRepository orderRepository;
     private final OrderQueryRepository orderQueryRepository;
-
+    private final OrderQueryService orderQueryService;
 
     @GetMapping("/api/v1/orders")
     public List<Order> orderV1() {
@@ -58,13 +59,7 @@ public class OrderApiController {
 
     @GetMapping("/api/v3/orders")
     public List<OrderDTO> orderV3() {
-        List<Order> orders = orderRepository.findAllWithItem();
-
-        List<OrderDTO> result = orders.stream()
-                .map(OrderDTO::new)
-                .collect(Collectors.toList());
-
-        return result;
+        return orderQueryService.orderV3();
     }
 
     @GetMapping("/api/v3.1/orders")
